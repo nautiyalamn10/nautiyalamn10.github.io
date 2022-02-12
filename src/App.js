@@ -1,24 +1,40 @@
-import logo from './logo.svg';
-import './App.css';
-
+import React, { useState } from "react";
+import Loading from "./Loading";
+import Customers from "./Customers";
+const url = "http://jsonplaceholder.typicode.com/users";
 function App() {
+  const [isLoading, setIsLoading] = useState(true); //when loading show form
+
+  const [uname, setName] = useState("");
+  const [customer, setCustomer] = useState([]);
+  const fetchDetails = async (name) => {
+    setIsLoading(true);
+    try {
+      const response = await fetch(url);
+      const customers = await response.json();
+      setCustomer(customers);
+      setName(name);
+      setIsLoading(false);
+    } catch (error) {
+      setIsLoading(false);
+      console.error();
+    }
+  };
+  // useEffect(() => {
+  //   fetchDetails();
+  // }, []);
+  if (isLoading) {
+    return (
+      <main>
+        <Loading fetchDetail={fetchDetails} />
+      </main>
+    );
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <main>
+      <Customers customers={customer} name={uname} />
+    </main>
   );
 }
 
