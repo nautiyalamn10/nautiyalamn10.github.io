@@ -34,7 +34,7 @@ const Customer = ({
           <a href="#">{website}</a>
         </div>
         <div className="customer-info">
-          <h4>Details : </h4>
+          <h4>Personal Details : </h4>
         </div>
 
         {readMore ? (
@@ -48,10 +48,12 @@ const Customer = ({
             <p>ZipCode : {address.zipcode}</p>
           </>
         )}
-        <button onClick={() => setReadMore(!readMore)}>
-          {!readMore ? "Show less" : "  Full Details"}
-        </button>
-        <div className="customer-info">
+        <div>
+          <button onClick={() => setReadMore(!readMore)}>
+            {!readMore ? "Show less" : "  Full Details"}
+          </button>
+        </div>
+        <div className="customer-info" >
           <h4>Company Details : </h4>
         </div>
         {readMore2 ? (
@@ -59,7 +61,7 @@ const Customer = ({
         ) : (
           <>
             <h4>Company name : {company.name}</h4>
-            <h5>{company.catchPhrase}</h5>
+            <p>{company.catchPhrase}</p>
             <p>Business : {company.bs}</p>
           </>
         )}

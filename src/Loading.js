@@ -43,7 +43,7 @@ const Loading = ({ fetchDetail }) => {
             </label>
           </div>
 
-          <button onClick={handleSubmit} type="submit" className="btn">
+          <button onClick={handleSubmit} type="submit" oclassName="btn">
             Login
           </button>
         </form>

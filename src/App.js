@@ -1,6 +1,8 @@
 import React, { useState } from "react";
 import Loading from "./Loading";
 import Customers from "./Customers";
+import Login from "./login/Login";
+
 const url = "http://jsonplaceholder.typicode.com/users";
 function App() {
   const [isLoading, setIsLoading] = useState(true); //when loading show form
@@ -24,11 +26,7 @@ function App() {
   //   fetchDetails();
   // }, []);
   if (isLoading) {
-    return (
-      <main>
-        <Loading fetchDetail={fetchDetails} />
-      </main>
-    );
+    return <Login fetchDetail={fetchDetails} />;
   }
 
   return (
